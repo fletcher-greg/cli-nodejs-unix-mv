@@ -18,7 +18,7 @@ async function main() {
   await fsPromises
     .copyFile(origin, destination)
     .then(() => console.log("copied"))
-    .catch(() => console.log(error));
+    .catch(error => console.log(error));
 
   try {
     // try to delete file
@@ -29,6 +29,7 @@ async function main() {
 }
 // check to see if files are the same type
 function validate(origin, destination) {
+  if (!origin.length || !destination.length) return "error";
   let oFileType = origin.split(".")[1];
   let dFileType = destination.split(".")[1];
 
